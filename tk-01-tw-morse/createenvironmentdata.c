@@ -22,7 +22,6 @@ EnvironmentData CreateEnvironmentData(float acc_x, float acc_y, float acc_z, sig
 	environmentData.acc_y = convertFloatToDeci(acc_y);
 	environmentData.acc_z = convertFloatToDeci(acc_z);
 	environmentData.temp = temp;
-	environmentData.state = CalculateSystemState();
 
 	return environmentData;
 }
