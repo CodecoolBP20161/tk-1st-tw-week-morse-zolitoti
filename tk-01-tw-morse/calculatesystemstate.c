@@ -1,5 +1,5 @@
 #include "selfprot.h"
-
+#include <math.h>
 /*
  * Function: CalculateSystemState
  * --------------------------------------------
@@ -9,4 +9,25 @@
  * env: contains environment data and calculated state will be stored in it
  */
 void CalculateSystemState(EnvironmentData *env) {
+	int x = env.acc_x;
+	int z = env.acc_z;
+	int y = env.acc_y;
+	int temp = env.temp;
+
+	int magnitude=sqrt(x*x+z*z+y*y);
+
+	if((z>=2 || x>=2 || y >= 2 || magnitude >= 3) && temp >= 34){
+		env.state = HIGH_ACCELERATION_AND_TEMP;
+	}
+	else if(z>=2 || x>=2 || y >= 2 || magnitude >= 3){
+			env.state = HIGH_ACCELERATION;
+		}
+	else if(temp >= 34){
+		env.state = HIGH_TEMP;
+	}
+	else{
+		env.state = OK;
+	}
+
+
 }
