@@ -9,9 +9,9 @@
  * env: contains environment data and calculated state will be stored in it
  */
 void CalculateSystemState(EnvironmentData *env) {
-	int x = env->acc_x;
-	int z = env->acc_z;
-	int y = env->acc_y;
+	int x = abs(env->acc_x);
+	int z = abs(env->acc_z);
+	int y = abs(env->acc_y);
 	int temp = env->temp;
 
 	int magnitude=sqrt(x*x+z*z+y*y);
