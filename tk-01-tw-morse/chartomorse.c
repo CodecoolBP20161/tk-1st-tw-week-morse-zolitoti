@@ -1,5 +1,6 @@
 #include "selfprot.h"
 #include <string.h>
+#include <stdio.h>
 
 /*
  * Function: CharToMorse
@@ -15,17 +16,22 @@
  */
 int CharToMorse(char input[], char *output) {
 
-	int i = 0;
+	int i;
+	char last_converted;
 
-	for(i; i!=strlen(input); i++){
-		strcat(output,CHAR_TO_MORSE_ALPHA[(int)input[i]-65]);
-		if(input[i] != ' ' && (input[i-1] !=' ' || input[i+1] !=' ')){
-			strcat(output, "/");
+	for(i=0; i!=strlen(input); i++){
+		if(input[i]<91 && input[i]>64){
+			strcat(output,CHAR_TO_MORSE_ALPHA[(int)input[i]-65]);
+			if(input[i+1] != ' '){
+				strcat(output, "/");
+			}
+			last_converted = i;
 		}
-		if(input[i] == ' '){
-			strcat(output, "\t\t");
+		else if(input[i] == ' '){
+			strcat(output, "\t");
 		}
 	}
 	output[strlen(output)-1] = '\0';
-	return strlen(output)-1;
+	printf("last converted----------------- is: %d\n", i);
+	return i;
 }
