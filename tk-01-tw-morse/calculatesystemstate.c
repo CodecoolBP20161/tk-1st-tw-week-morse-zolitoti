@@ -12,7 +12,7 @@ void CalculateSystemState(EnvironmentData *env) {
 	int x = abs(env->acc_x);
 	int z = abs(env->acc_z);
 	int y = abs(env->acc_y);
-	int temp = env->temp;
+	int temp = abs(env->temp);
 
 	int magnitude=sqrt(x*x+z*z+y*y);
 

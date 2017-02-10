@@ -14,8 +14,7 @@
  */
 int MorseToBinary(char input[], char output[]) {
 
-	char a[300] = {""};
-
+	char a[250] = {""};
 
 	for(int i = 0; i < strlen(input) ; i++){
 
@@ -23,43 +22,35 @@ int MorseToBinary(char input[], char output[]) {
 			strcat(a,"111");
 		}
 
-		else if(input[i] == '.'){ //short .
+		else if(input[i] == '.'){ 	//short .
 			strcat(a, "1");
 		}
 
-		else if(input[i] == ' '){ //space
+		else if(input[i] == ' '){ 	//space
 			strcat(a, "0");
 		}
 
-		else if(input[i] == '\t'){ //tab
+		else if(input[i] == '\t'){ 	//tab
 			strcat(a, "0000000");
 		}
 
-		else if(input[i] == '/'){ //slash
+		else if(input[i] == '/'){ 	//slash
 			strcat(a, "000");
 		}
 	}
+
 	int modulo = (int)strlen(a)%8;
 	int for_run = (int)strlen(a)/8;
 
 
-	for(int i = 0; i <= for_run; i++){
+	for(int i = 0; i < for_run+modulo; i++){
 		for(int j = 0; j < 8; j++){
-			if(a[i*8+j]== '0'){
+			if(a[i*8+j]== '0')
+			{
 				output[i] <<= 1;
 			}
-			else {
-				output[i] <<= 1;
-				output[i] += 0x1;
-			}
-		}
-	}
-	for(int i = 0; i <= modulo; i++){
-		for(int j = 0; j < 8; j++){
-			if(a[i*8+j]== '0'){
-				output[i] <<= 1;
-			}
-			else {
+			else
+			{
 				output[i] <<= 1;
 				output[i] += 0x1;
 			}
