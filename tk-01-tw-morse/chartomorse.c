@@ -17,7 +17,6 @@
 int CharToMorse(char input[], char *output) {
 
 	int i;
-	char last_converted;
 
 	for(i=0; i!=strlen(input); i++){
 		if(input[i]<91 && input[i]>64){
@@ -25,13 +24,21 @@ int CharToMorse(char input[], char *output) {
 			if(input[i+1] != ' '){
 				strcat(output, "/");
 			}
-			last_converted = i;
+
 		}
 		else if(input[i] == ' '){
 			strcat(output, "\t");
 		}
+
+		else if(input[i]<58 && input[i]>47){
+			strcat(output,CHAR_TO_MORSE_NUMBER[(int)input[i]-48]);
+			if(input[i+1] != ' '){
+				strcat(output, "/");
+			}
+		}
+
+
 	}
 	output[strlen(output)-1] = '\0';
-	printf("last converted----------------- is: %d\n", i);
 	return i;
 }
