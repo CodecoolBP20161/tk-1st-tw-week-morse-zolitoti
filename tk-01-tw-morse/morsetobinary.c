@@ -39,23 +39,20 @@ int MorseToBinary(char input[], char output[]) {
 		}
 	}
 
-	int modulo = (int)strlen(a)%8;
-	int for_run = (int)strlen(a)/8;
+	int for_run = (int)(strlen(a)/8.0+0.99);
 
-
-	for(int i = 0; i < for_run+modulo; i++){
+	for(int i = 0; i < for_run; i++){
 		for(int j = 0; j < 8; j++){
-			if(a[i*8+j]== '0')
-			{
+			if(a[i*8+j]== '0'){
 				output[i] <<= 1;
-			}
-			else
-			{
+			}else{
 				output[i] <<= 1;
 				output[i] += 0x1;
 			}
 		}
 	}
+
+
 
 
 return strlen(a);
