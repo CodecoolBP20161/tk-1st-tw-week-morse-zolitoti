@@ -41,8 +41,9 @@ int MorseToBinary(char input[], char output[]) {
 	}
 	int modulo = (int)strlen(a)%8;
 	int for_run = (int)strlen(a)/8;
-	for(int i = 0; i < for_run; i++){
-		int c = 0;
+
+
+	for(int i = 0; i <= for_run; i++){
 		for(int j = 0; j < 8; j++){
 			if(a[i*8+j]== '0'){
 				output[i] <<= 1;
@@ -53,8 +54,7 @@ int MorseToBinary(char input[], char output[]) {
 			}
 		}
 	}
-	for(int i = 0; i < modulo; i++){
-		int c = 0;
+	for(int i = 0; i <= modulo; i++){
 		for(int j = 0; j < 8; j++){
 			if(a[i*8+j]== '0'){
 				output[i] <<= 1;
@@ -65,9 +65,6 @@ int MorseToBinary(char input[], char output[]) {
 			}
 		}
 	}
-	printf("igy nez ki a bitstring: %s\n",a);
-	printf("Ez meg a merete: %d\n",for_run);
-	printf("ez a vége: %x %x %x\n", output[0], output[1], output[2]);
 
 
 return strlen(a);
