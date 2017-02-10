@@ -18,17 +18,10 @@ EnvironmentData CreateEnvironmentData(float acc_x, float acc_y, float acc_z, sig
 
 	EnvironmentData environmentData;
 
-	environmentData.acc_x = convertFloatToDeci(acc_x);
-	environmentData.acc_y = convertFloatToDeci(acc_y);
-	environmentData.acc_z = convertFloatToDeci(acc_z);
+	environmentData.acc_x = roundf(acc_x);
+	environmentData.acc_y = roundf(acc_y);
+	environmentData.acc_z = roundf(acc_z);
 	environmentData.temp = temp;
 
 	return environmentData;
-}
-
-int convertFloatToDeci(float x){
-
-	x = roundf(x);
-
-	return (int)x;
 }
